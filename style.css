@@ -1,0 +1,79 @@
+:root {
+  --sea: #0277bd;
+  --sea-light: #29b6f6;
+  --sea-deep: #01579b;
+  --coral: #ff7a59;
+  --text: #1b2733;
+  --muted: #5b6b7a;
+  --bg: #f6f9fc;
+  --card: #ffffff;
+  --line: #e1e8ef;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e6edf3;
+    --muted: #9fb0c0;
+    --bg: #0d1620;
+    --card: #15212d;
+    --line: #243445;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+header {
+  background: linear-gradient(135deg, var(--sea-light), var(--sea-deep));
+  color: #fff;
+  padding: 28px 16px 36px;
+}
+header .wrap { display: flex; align-items: center; gap: 14px; }
+header img { width: 56px; height: 56px; border-radius: 14px; }
+header h1 { margin: 0; font-size: 1.5rem; line-height: 1.25; }
+header p { margin: 2px 0 0; opacity: .9; font-size: .95rem; }
+.wrap { max-width: 760px; margin: 0 auto; }
+main { padding: 0 16px 48px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: -18px;
+}
+h2 { font-size: 1.15rem; margin: 28px 0 8px; color: var(--sea); }
+@media (prefers-color-scheme: dark) { h2 { color: var(--sea-light); } }
+h3 { font-size: 1rem; margin: 18px 0 6px; }
+ul { padding-left: 1.2em; }
+li { margin: 4px 0; }
+a { color: var(--sea); }
+@media (prefers-color-scheme: dark) { a { color: var(--sea-light); } }
+.meta { color: var(--muted); font-size: .9rem; }
+.lang { display: flex; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
+.lang a, .btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .9rem;
+}
+.btn.primary { background: var(--coral); border-color: var(--coral); color: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; }
+.table-scroll { overflow-x: auto; }
+.note {
+  background: rgba(2, 119, 189, .08);
+  border-left: 4px solid var(--sea);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 24px 16px 40px; }
+ol li { margin: 6px 0; }
