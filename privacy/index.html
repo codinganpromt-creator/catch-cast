@@ -21,7 +21,7 @@
 <main class="wrap">
 <div class="card">
 <div class="lang"><a href="#id">Bahasa Indonesia</a><a href="#en">English</a></div>
-<p class="meta">Berlaku sejak 18 November 2026 · Effective 18 November 2026</p>
+<p class="meta">Berlaku sejak 19 November 2026 · Effective 19 November 2026</p>
 
 <section id="id">
 <p>Kebijakan ini menjelaskan data apa yang dikumpulkan aplikasi <strong>Catch Cast</strong> (ID aplikasi <code>id.catchcast.catch_cast</code>), untuk apa data itu dipakai, kepada siapa data dibagikan, dan bagaimana Anda dapat menghapusnya.</p>
@@ -42,7 +42,12 @@
   <li>Catch Cast <strong>tidak melacak lokasi di latar belakang</strong> dan tidak menyimpan riwayat perjalanan.</li>
   <li>Koordinat tangkapan dan spot bersifat <strong>privat</strong>: hanya dapat dilihat oleh Anda. Post yang Anda bagikan hanya memuat nama daerah yang Anda ketik sendiri, bukan koordinat.</li>
 </ul>
-<h3>c. Konten yang Anda buat</h3>
+<h3>c. Notifikasi peringatan BMKG</h3>
+<ul>
+  <li>Jika notifikasi diizinkan, perangkat Anda mendapat <strong>token notifikasi</strong> dari Firebase Cloud Messaging (Google) dan berlangganan <strong>area kasar berukuran sekitar 28 km</strong> di sekitar titik prakiraan dan spot Anda. Langganan ini disimpan oleh Google, bukan di server kami, dan tidak memuat koordinat persis maupun identitas akun Anda.</li>
+  <li>Server kami hanya mengirim peringatan BMKG ke area tersebut; server tidak menerima token, lokasi, atau identitas Anda. Matikan kapan saja di Profil → Pengaturan → Notifikasi peringatan BMKG, atau di pengaturan Android. Keluar akun juga menghentikan langganan.</li>
+</ul>
+<h3>d. Konten yang Anda buat</h3>
 <ul>
   <li>Post, komentar, suka, relasi ikuti, daftar pengguna yang Anda blokir, jurnal tangkapan (spesies, ukuran, berat, umpan, catatan, waktu), spot, dan laporan konten yang Anda kirim.</li>
   <li>Saat tangkapan dicatat, aplikasi menyimpan ringkasan kondisi waktu itu (cuaca, pasang, fase bulan, skor aktivitas ikan).</li>
@@ -69,9 +74,10 @@
   <tr><th>Layanan</th><th>Data yang diterima</th><th>Tujuan</th></tr>
   <tr><td><a href="https://firebase.google.com/support/privacy">Google Firebase</a> (Authentication, Cloud Firestore)</td><td>Data akun dan semua konten di bagian 2</td><td>Login dan penyimpanan data. Database berada di region Jakarta (asia-southeast2); layanan login Google dapat memproses data di negara lain.</td></tr>
   <tr><td>Google, <a href="https://www.facebook.com/privacy/policy">Facebook (Meta)</a>, Apple</td><td>Permintaan login</td><td>Masuk dengan akun Anda, sesuai kebijakan privasi masing-masing penyedia.</td></tr>
-  <tr><td><a href="https://open-meteo.com/en/terms">Open-Meteo</a></td><td>Koordinat lokasi yang Anda buka dan alamat IP</td><td>Mengambil prakiraan cuaca, gelombang, dan pasang surut.</td></tr>
+  <tr><td>Server Catch Cast (catch-cast.fenrirtech.online, dikelola pengembang, berlokasi di Indonesia)</td><td>Koordinat lokasi yang Anda buka dan alamat IP, tanpa identitas akun</td><td>Meneruskan permintaan prakiraan ke Open-Meteo dan menyimpan hasilnya sementara (maksimal 1 jam per area sekitar 5 km) agar lebih cepat. Server tidak mencatat koordinat per pengguna; log akses teknis server dapat memuat alamat IP dan disimpan singkat untuk keamanan.</td></tr>
+  <tr><td><a href="https://open-meteo.com/en/terms">Open-Meteo</a></td><td>Koordinat area (dibulatkan sekitar 5 km) dari server kami; koordinat dan alamat IP Anda bila server kami sedang tidak tersedia</td><td>Mengambil prakiraan cuaca, gelombang, dan pasang surut.</td></tr>
   <tr><td>BMKG</td><td>Alamat IP (tanpa koordinat)</td><td>Mengunduh daftar peringatan dini cuaca; pencocokan lokasi dilakukan di perangkat Anda.</td></tr>
-  <tr><td>OpenStreetMap, Esri</td><td>Area peta yang ditampilkan dan alamat IP</td><td>Memuat gambar peta dan citra satelit.</td></tr>
+  <tr><td>OpenStreetMap, Esri</td><td>Area peta yang ditampilkan atau diunduh untuk offline (sekitar spot yang Anda pilih), dan alamat IP</td><td>Memuat gambar peta dan citra satelit; peta offline disimpan hanya di perangkat Anda.</td></tr>
   <tr><td>YouTube (Google)</td><td>Data pemutaran video</td><td>Hanya bila Anda memutar video YouTube yang dilampirkan di post.</td></tr>
 </table>
 </div>
@@ -114,6 +120,7 @@
 <ul>
   <li><strong>Account data:</strong> name, email address, profile photo (not provided by Apple) and user ID from Google, Facebook or Apple sign-in. We never receive your password. Your email is not shown to other users.</li>
   <li><strong>Precise location (GPS)</strong>, only while you use the app: for forecasts at your location, catch logs and saved fishing spots. No background tracking, no location history. Catch and spot coordinates are private to you; posts only contain an area name you type yourself.</li>
+  <li><strong>BMKG warning notifications:</strong> if you allow notifications, your device gets a Firebase Cloud Messaging (Google) notification token and subscribes to coarse areas (~28 km) around your forecast point and spots. These subscriptions are held by Google, not on our server, and contain no exact coordinates or account identity. Our server only sends BMKG warnings to those areas and never receives your token, location or identity. Turn it off in Profile → Settings, in Android settings, or by signing out.</li>
   <li><strong>Content you create:</strong> posts, comments, likes, follows, blocked users, catch logs (species, size, weight, bait, notes, time, conditions snapshot), spots and content reports. Posts, comments, display name, profile photo and catch count are visible to other signed-in users.</li>
   <li><strong>Not collected:</strong> no ads or advertising ID, no behavioural analytics or third-party crash reporting, no access to contacts, SMS, microphone or files.</li>
 </ul>
@@ -125,9 +132,10 @@
 <ul>
   <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore): stores account data and content. Database region: Jakarta (asia-southeast2); Google's sign-in service may process data in other countries.</li>
   <li><strong>Google, Facebook (Meta), Apple</strong>: sign-in, under their own privacy policies.</li>
-  <li><strong>Open-Meteo</strong>: receives the coordinates you view and your IP address to return weather, wave and tide forecasts.</li>
+  <li><strong>Catch Cast server</strong> (catch-cast.fenrirtech.online, run by the developer, located in Indonesia): receives the coordinates you view and your IP address, without your account identity, to fetch forecasts from Open-Meteo and cache them briefly (up to 1 hour per ~5 km area). It does not record coordinates per user; technical access logs may contain IP addresses and are kept briefly for security.</li>
+  <li><strong>Open-Meteo</strong>: receives area coordinates (rounded to ~5 km) from our server, or your coordinates and IP address directly if our server is unavailable, to return weather, wave and tide forecasts.</li>
   <li><strong>BMKG</strong>: receives your IP address only, when downloading the public weather-warning list; location matching happens on your device.</li>
-  <li><strong>OpenStreetMap, Esri</strong>: receive the map area shown and your IP address to load map and satellite tiles.</li>
+  <li><strong>OpenStreetMap, Esri</strong>: receive the map area shown or downloaded for offline use (around a spot you choose) and your IP address to load map and satellite tiles; offline maps are stored only on your device.</li>
   <li><strong>YouTube</strong>: only when you play a YouTube video attached to a post.</li>
 </ul>
 
